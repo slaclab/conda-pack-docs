@@ -3,12 +3,6 @@ site_url: https://slaclab.github.io/conda-pack-docs
 repo_url: https://github.com/slaclab/conda-pack-docs
 nav:
   - Overview: index.md
-  - Documentation:
-    - Layout: Layout.md
-    - Client:
-      - Controller: Controller.md
-      - Monitors: Monitors.md
-      - Widgets: Widgets.md
-    - Model: Model.md
-    - Server: Server.md
-    - EPICS: EPICS.md
+  - Github Actions: action.md
+  - Docker: docker.md
+  - Known Issues: issues.md
