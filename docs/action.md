@@ -1,6 +1,6 @@
-# lcls-rhel6-conda-pack
+# Conda pack for custom LCLS Python environments
 
-This action is a composite action that handles the creation and testing of a python environment using a RHEL6 Docker image aimed at replicating the installation environment of LCLS prod machines. 
+A GitHub action has been defined to the creation and testing of a Python environment using a RHEL6 Docker image aimed at replicating the installation environment of LCLS prod machines. 
 
 In order to use this project, the repository must be packaged with a root level `environment.yml` file constructed using the [conda template](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually). The action creates an environment from this file within the context of the RHEL6 docker image specified by [lcls-rhel6-conda-docker](https://github.com/slaclab/lcls-rhel6-conda-docker) and will store the artifact.
 
@@ -23,10 +23,10 @@ jobs:
     name: Build environment
     steps:
       - name: Build environment
-        uses: jacquelinegarrahan/lcls-rhel6-conda-pack@v0.2
+        uses: jacquelinegarrahan/lcls-rhel6-conda-pack@v1.0.1
 ```
 
-The packed and tarred environment is then available in the working directory of the action with the naming scheme `{ENVIRONMENT_NAME}.tar.gz` For example, the following action will upload the packed environment on pushed tags. 
+The packed and tarred environment is then available in the working directory of the action with the naming scheme `${ENVIRONMENT_NAME}.tar.gz` For example, the following action will upload the packed environment on pushed tags. 
 
 ```yaml
 name: Publish release
