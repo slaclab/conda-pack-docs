@@ -6,6 +6,6 @@ nav:
   - Github Actions: action.md
   - Docker: docker.md
   - Tests: tests.md
-  - Known Issues: issues.md
+  - Issues: issues.md
 theme:
   name: material
