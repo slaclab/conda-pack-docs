@@ -1,10 +1,22 @@
 # lcls-rhel6-conda-docker
 
-The Docker image used in the conda-pack action aims to replicate a conda-pack and test environment analagous to LCLS production RHEL6 machines. While resolved conda environments are largely transferable, there are some instances of virtual packages that may break a packed environment. [Virtual packages](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-virtual.html) include `__cuda`, `__osx`, `__glibc`, `__linux`, `__unix`, `__win`. Of particular importance to our conda environment builds is the `glibc` version. The RHEL6 `glibc=2.12`, may be incompatable with some compiled code. For this reason, we aim to pack our environments in as-similar-a-machine as possible. Additional requirements and tests may be added as needed, with the aim of a robust testing tool before deployment.
+The Docker image used by the conda-pack action aims replicate an LCLS production RHEL6 machines for environment build and test. While resolved conda environments are largely transferable, there are some instances of virtual packages that may break a packed environment. [Virtual packages](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-virtual.html) include `__cuda`, `__osx`, `__glibc`, `__linux`, `__unix`, `__win`. Of particular importance to our conda environment builds is the `glibc` version. The RHEL6 `glibc=2.12`, may be incompatible with some compiled code. For this reason, we aim to pack our environments in as-similar-a-machine as possible. Additional requirements and tests may be added as needed, with the aim of a robust testing tool before deployment.
 
-The image requires mounting of an environment file to `/tmp/environment.yml`, mounting of the repository to `/tmp/project`, and setting of the environment variable ENVIRONMENT_NAME; however, these are all handled by the GitHub action [`slaclab/lcls-rhel6-conda-pack`](https://github.com/slaclab/lcls-rhel6-conda-pack) and aren't intended to be used directly except in local testing.
+The image requires mounting of an environment file to `/tmp/environment.yml`, mounting of the repository to `/tmp/project`, mounting of a testing script to `/tmp/run-test.sh`, and setting of the environment variable `ENVIRONMENT_NAME`. 
+
+Environment files may be tested using this image locally with a docker installation:
+```
+$ docker run -v $(pwd)/environment.yml:/tmp/environment.yml \
+        -v $(pwd):/tmp/project \
+        -v /complete/path/to/test/file.sh:/tmp/run-test.sh \
+        -e ENVIRONMENT_NAME=my_environment \
+        -t jgarrahan/lcls-rhel6-conda-docker:v1.0 /tmp/environment.yml
+```
+
+These are all handled by the GitHub action [`slaclab/lcls-rhel6-conda-pack`](https://github.com/slaclab/lcls-rhel6-conda-pack).
 
 Releases to this repository trigger a workflow that builds the docker image using the repository Dockerfile. The resulting image is published to [dockerhub](https://hub.docker.com/repository/docker/jgarrahan/lcls-rhel6-conda-docker) using the release version as a tag. 
 
+
 ## Tests
-The Docker image specified by this repository expects tests defined and run using [pytest](https://docs.pytest.org/en/6.2.x/). An effort should be made by code developers to implement a comprehensive set of tests for their packages with the understanding that the efficacy of this pack-and-test process is a function of their effort in doing so. 
+The Docker image expects tests defined and run using a bash script mounted to `/tmp/run-test.sh`. An effort should be made by code developers to implement a comprehensive set of tests for their packages with the understanding that the efficacy of this pack-and-test process is a function of their effort in doing so. The Python environment described by their yaml will be active during testing.
