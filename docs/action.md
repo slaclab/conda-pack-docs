@@ -27,7 +27,7 @@ jobs:
     name: Build environment
     steps:
       - name: Build environment
-        uses: jacquelinegarrahan/lcls-rhel6-conda-pack@v1.1
+        uses: jacquelinegarrahan/lcls-rhel6-conda-pack@v1.2
 ```
 
 ## Publish
@@ -51,7 +51,7 @@ jobs:
     name: Build environment
     steps:
       - name: Build environment
-        uses: jacquelinegarrahan/lcls-rhel6-conda-pack@v1.1
+        uses: jacquelinegarrahan/lcls-rhel6-conda-pack@v1.2
       - name: Upload artifact to release
         uses: svenstaro/upload-release-action@v2
         with:
