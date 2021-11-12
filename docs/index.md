@@ -6,7 +6,7 @@ This documentation describes the conda-pack workflow used for assembling product
 
 Steps:
 - Describe the conda environment in the `environment.yml` file in the root of your project repository. Pin versions for only essential packages. Attempt to use only [conda-forge](https://conda-forge.org/) maintained packages.
-- Write a bash script capturing all intended behaviors of your environment. You may assume your generated Python environment will be active. 
+- Write a bash script capturing all intended behaviors of your environment. You may assume your generated Python environment will be active. See: [tests](tests.md)
 - Add [publish](action.md) Github action yaml in the `.github/workflows` folder of your project repository.
 - Create release.
 
@@ -16,7 +16,7 @@ Two example actions are outlined in [actions](actions.md): a generic testing bui
 
 ## Using the environment
 
-A published environment will be available as a file attached to a release. Following download, the environment may be untarre then unpacked:
+A published environment will be available as a file attached to a release. Following download, the environment may be untarred then unpacked:
 
 ```
 $ mkdir my_environment
@@ -29,7 +29,7 @@ The environment will not work if moved after running unpack. Make sure to perfor
 
 ## Deploying to production
 
-Production deployment requires a passing build and the file transfer will be handled by Jackie Garrahan (jgarra@slac.stanford.edu, or Jackie Garrahan via SLAC slack). Before migrating to prod, an attempt will be made to work with the developer on executing dev tests. Functionality cannot be guaranteed beyond that described in testing. 
+In order to deploy your release to production, post in the `lcls-python-environments` Slack channel. Before migrating to prod, an attempt will be made to work with the developer on executing dev tests. Functionality cannot be guaranteed beyond that described in testing. 
 
 All deployments will be tracked through jobs submitted on CATER #152805.
 
@@ -40,3 +40,22 @@ This workflow will attempt to support all [conda-forge](https://conda-forge.org/
 
 ## Tests
 The Docker image expects tests defined and run using a bash script mounted to `/tmp/run-test.sh`. An effort should be made by code developers to implement comprehensive testing for their packages with the understanding that the efficacy of this pack-and-test process is a function of their effort in doing so.
+
+The flag:
+
+```bash
+#!/bin/bash
+set -e
+```
+Should be included at the top of the testing script to force exit on failed subcommands.
+
+An example test file running a pytest suite for a repository is given below:
+
+```bash
+#!/bin/bash
+set -e
+
+git clone https://github.com/slaclab/lume-epics.git
+cd lume-epics
+pytest
+```
