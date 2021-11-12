@@ -16,7 +16,7 @@ Steps:
 
 ## Creating a release
 
-Two example actions are outlined in [actions](actions.md): 1. a generic testing build executed on all pushed commits to the main branch and 2. a publish workflow that executes the build on a tagged release then publishes a tarred environment to the release tag. Releases and tags must be used to preserve versioning and identify incompatibilities.
+Two example actions are outlined in [actions](action.md): 1. a generic testing build executed on all pushed commits to the main branch and 2. a publish workflow that executes the build on a tagged release then publishes a tarred environment to the release tag. Releases and tags must be used to preserve versioning and identify incompatibilities.
 
 ## Using the environment
 
