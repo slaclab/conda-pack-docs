@@ -5,10 +5,10 @@ This documentation describes the conda-pack workflow used for assembling product
 ## Building an environment
 
 Steps:
-- Describe the conda environment in the `environment.yml` file in the root of your project repository. Pin versions for only essential packages. Attempt to use only [conda-forge](https://conda-forge.org/) maintained packages.  
-- Write a bash script capturing all intended behaviors of your environment. You may assume your generated Python environment will be active. See: [tests](tests.md)  
-- Add [publish](action.md) Github action yaml in the `.github/workflows` folder of your project repository.  
-- Create release.  
+* Describe the conda environment in the `environment.yml` file in the root of your project repository. Pin versions for only essential packages. Attempt to use only [conda-forge](https://conda-forge.org/) maintained packages.  
+* Write a bash script capturing all intended behaviors of your environment. You may assume your generated Python environment will be active. See: [tests](tests.md)  
+* Add [publish](action.md) Github action yaml in the `.github/workflows` folder of your project repository.  
+* Create release.  
 
 ## Creating a release
 
