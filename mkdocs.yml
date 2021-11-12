@@ -7,5 +7,6 @@ nav:
   - Docker: docker.md
   - Tests: tests.md
   - Issues: issues.md
+  - Examples: examples.md
 theme:
   name: material
