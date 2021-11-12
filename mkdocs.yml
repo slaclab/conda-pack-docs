@@ -7,3 +7,5 @@ nav:
   - Docker: docker.md
   - Tests: tests.md
   - Known Issues: issues.md
+theme:
+  name: material

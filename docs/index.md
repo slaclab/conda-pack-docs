@@ -33,7 +33,7 @@ The environment will not work if moved after running unpack. Make sure to perfor
 
 ## Deploying to production
 
-In order to deploy your release to production, post in the `lcls-python-environments` Slack channel. Before migrating to prod, an attempt will be made to work with the developer on executing tests on dev. Functionality cannot be guaranteed beyond that described in testing. 
+In order to deploy your release to production, post in the `lcls-python-environments` Slack channel. We will work with the developer on executing additional tests on dev beore deploying to prod. Functionality cannot be guaranteed beyond that described in testing. 
 
 All deployments will be tracked through jobs submitted on CATER #152805.
 

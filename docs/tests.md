@@ -64,4 +64,4 @@ pytest
 ```
 
 ## Testing your code with pytest
-Testing with [pytest](https://docs.pytest.org/en/6.2.x/) can make  existence signficicantly easier by identifying failures as you develop and reducing bug discovery time. Tests should at least cover the major data structures and functionality of your project. For many SLAC based projects, this may require a restructuring of essential functions into utility scripts rather than notebooks and packaging projects using [Python packaging](https://packaging.python.org/tutorials/packaging-projects/) standards.
+Testing with [pytest](https://docs.pytest.org/en/6.2.x/) can make  existence significantly easier by identifying failures as you develop and reducing bug discovery time. Tests should at least cover the major data structures and functionality of your project. For many SLAC based projects, this may require a restructuring of essential functions into utility scripts rather than notebooks and packaging projects using [Python packaging](https://packaging.python.org/tutorials/packaging-projects/) standards.
